@@ -1,3 +1,7 @@
+This is a travel itinerary builder using AI. User provides a destination and personal preferences and the app comes up with an itinerary along with budget. (Work in progress).
+
+Technologies used:  React, Gemini AI, Firebase & TailwindCSS
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
