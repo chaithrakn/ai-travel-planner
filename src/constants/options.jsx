@@ -24,17 +24,17 @@ export const selectTravelStyleOptions = [
     },
     { 
         id: '5',
-        title: 'Adventure Travel', 
-        desc: 'Exciting outdoor experiences',
+        title: 'Group', 
+        desc: 'Great for friends',
         icon: '🏔️',
-        people: 'Any'
+        people: 'Over 5 people'
     }
 ]
 
 export const selectBudgetOptions = [
     {
         id: '1',
-        title: 'Budget',
+        title: 'Cheap',
         desc: 'Affordable travel for cost-conscious explorers',
         icon: '💸'
     },
@@ -50,4 +50,6 @@ export const selectBudgetOptions = [
         desc: 'Premium experiences and indulgence',
         icon: '👑'
     }
-]    
+]  
+
+export const AI_PROMPT = "Generate travel plan for location: {location}, for {noOfDays} days for {travelStyle} with a {budget} budget. Give me hotels options list with hotel name, hotel address, price, hotel image url, geo coordinates, rating and description. Suggest itinerary with place name, place details, place image url, geo coordinates, ticket price, rating, time to travel to each location for {noOfDays} days with each day plan with best time to visit in JSON format. Use camelcase for all names. "

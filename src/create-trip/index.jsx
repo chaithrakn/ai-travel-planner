@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import GooglePlacesAutoComplete from 'react-google-places-autocomplete'
 import { Input } from '../components/ui/input';
-import { selectBudgetOptions, selectTravelStyleOptions } from '../constants/options';
+import { AI_PROMPT, selectBudgetOptions, selectTravelStyleOptions } from '../constants/options';
 import { Button } from '../components/ui/button';
+import { toast } from 'sonner';
+import { chatSession } from '../service/AIModel.jsx';
 
 function CreateTrip() {
   // setPlace is a state setter function created by React's useState hook
@@ -24,9 +26,24 @@ function CreateTrip() {
     console.log(formData);
   }, [formData]);
 
-  const onGenerateTrip = () => {
+  const onGenerateTrip = async() => {
     // Function to handle trip generation logic
     console.log("Generating trip with data:", formData);
+
+    if (!formData.location || !formData.noOfDays || !formData.travelStyle || !formData.budget) {
+      toast("Please fill all the fields");
+      return
+    } 
+    
+    const FINAL_PROMPT = AI_PROMPT.replace('{location}', formData.location.label)
+                              .replace('{noOfDays}', formData.noOfDays)
+                              .replace('{travelStyle}', formData.travelStyle)
+                              .replace('{budget}', formData.budget)
+                              .replace('{noOfDays}', formData.noOfDays);
+    console.log(FINAL_PROMPT);   
+    
+    const result = await chatSession.sendMessage(FINAL_PROMPT);
+    console.log(result?.response?.text());  
     return;
   }
 
